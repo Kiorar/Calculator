@@ -1,47 +1,53 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main(){
 
 
-    char operator;
-    double number1;
-    double number2;
-    double result;
+int main() {
 
-    printf("Enter an operator\n");
-    scanf("%c", &operator);
 
-    printf("Enter the first Number:\n");
-    scanf("%lf", &number1);
+    int running = 1;
+    while(running) {
+        char a;
+        printf("\nEnter 'a' to calculate, 'q' to quit:\n");
+        scanf(" %c", &a);
 
-    printf("Enter the second Number:\n");
-    scanf("%lf", &number2); 
+        if(a == 'q') {
+            running = 0;
+            break;
+        } else if(a == 'a') {
+            double number1, number2, result;
+            char operator;
 
-    switch(operator){
-        case '+':
-        result  = number1 + number2;
-        printf ("Your result is: %lf", result);
-        break;
+            printf("Enter the first Number:\n");
+            scanf("%lf", &number1);
 
-        case '-':
-        result  = number1 - number2;
-        printf ("Your result is: %lf", result);
-        break;
+            printf("Enter an operator:\n");
+            scanf(" %c", &operator);
 
-        case '*':
-        result  = number1 * number2;
-        printf ("Your result is: %lf", result);
-        break;
+            printf("Enter the second Number:\n");
+            scanf("%lf", &number2);
 
-        case '/':
-        result  = number1 / number2;
-        printf ("Your result is: %lf", result);
-        break;
+            switch(operator) {
+                case '+': result = number1 + number2; break;
+                case '-': result = number1 - number2; break;
+                case '*': result = number1 * number2; break;
+                case '/': result = number1 / number2; break;
+                default: 
+                    printf("Operator is invalid\n"); 
+                    continue; 
+            }
 
-    default:
-            printf("\nOperator is Invalid");
+            printf("Your result is: %lf\n", result);
 
+
+        } else {
+            printf("Invalid option\n");
+        }
     }
 
+
+    printf("Goodbye!\n");
     return 0;
 }
